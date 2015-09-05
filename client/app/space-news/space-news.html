@@ -1,0 +1,15 @@
+<div class="col-md-12">
+  <h1>Space News</h1>
+  <hr />
+  <ul>
+    <li ng-repeat="m in message.data">
+      <img ng-src="{{m.image.url}}" height="600"/>
+      <h2>{{m.titleNoFormatting}}</h2>
+      <span>by {{m.publisher}} @ {{m.publishedDate}}</span>
+      <br />
+      <br />
+      <p>{{m.content}}</p>
+      <hr />
+    </li>
+  </ul>
+</div>
