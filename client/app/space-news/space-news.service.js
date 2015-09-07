@@ -1,18 +1,20 @@
 'use strict';
 
 angular.module('spacenewsioApp')
-  .factory('SpaceNews', function ($rootScope) {
+  .factory('SpaceNews', function () {
     // Service logic
     // ...
 
-    var meaningOfLife = {
-      data: []
+    var SpaceNews = {
+      aggregate: []
     };
+
+    $resource('/api/space-newss/ceres')
 
     // Public API here
     return {
-      someMethod: function () {
-        return meaningOfLife;
+      query: function() {
+        return SpaceNews;
       }
     };
   });

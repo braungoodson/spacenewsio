@@ -3,8 +3,8 @@
 angular.module('spacenewsioApp')
   .config(function ($stateProvider) {
     $stateProvider
-      .state('space-news', {
-        url: '/space-news',
+      .state('main.space-news', {
+        url: '^/space-news',
         templateUrl: 'app/space-news/space-news.html',
         controller: 'SpaceNewsCtrl'
       });

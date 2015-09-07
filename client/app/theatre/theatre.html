@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <h1>Theatre</h1>
+  <span ng-show="busy"><h2>{{busy}}</h2></span>
+  <br />
+  <ul style="padding-left:0px;list-style-type:none;">
+    <li ng-repeat="article in TheatreNews | orderBy : article.publishedDate">
+      <div ng-style="{'background-image':'url('+article.image.url+')'}" 
+        style="left:-30px;position:relative;height:50px;background-position-x:50%;background-position-y:50%;background-repeat:none;background-repeat: no-repeat;background-position-x: initial;">
+      </div>
+      <h2><a ng-href="{{article.unescapedUrl}}" ng-bind-html="article.titleNoFormatting"></a></h2>
+      <span>by {{article.publisher}} @ {{article.publishedDate}}</span>
+      <br />
+      <br />
+      <p ng-bind-html="article.content"></p>
+      <a ng-click="meta = !meta" style="cursor:pointer;">show meta</a>
+      <br />
+      <br ng-show="meta" />
+      <pre ng-show="meta">{{article}}</pre>
+      <br />
+    </li>
+  </ul>
+</div>
