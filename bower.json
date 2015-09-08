@@ -1,6 +1,6 @@
 {
   "name": "spacenewsio",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "dependencies": {
     "angular": ">=1.2.*",
     "json3": "~3.3.1",
