@@ -11,6 +11,7 @@ angular.module('spacenewsioApp', [
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
+      .when('/','/space-news')
       .otherwise('/space-news');
 
     $locationProvider.html5Mode(true);
