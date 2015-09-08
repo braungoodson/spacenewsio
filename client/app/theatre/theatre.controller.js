@@ -1,15 +1,8 @@
 'use strict';
 
 angular.module('spacenewsioApp')
-  .controller('TheatreCtrl', function ($scope) {
-    $scope.message = 'Hello';
-  });
-
-'use strict';
-
-angular.module('spacenewsioApp')
-  .controller('TheatreCtrl', function ($scope, $http) {
-    $scope.TheatreNews = [];
+  .controller('TheatreCtrl', function ($scope, $http, Lightbox) {
+    $scope.news = [];
     $scope.busy = 'acquiring data...';
     $http.get('/api/theatre-newss')
       .then(function(response){
@@ -20,8 +13,15 @@ angular.module('spacenewsioApp')
         });
         angular.forEach(response.data, function(article) {
           $scope.busy = 'populating news... ' + article.title;
-          $scope.TheatreNews.push(article);
+          $scope.news.push(article);
         });
         $scope.busy = false;
       });
+    $scope.enlarge = function(article) {
+      return Lightbox.openModal([{
+        url: article.image.url,
+        caption: article.title,
+        thUrl: ''
+      }], 0);
+    };
   });

@@ -41,3 +41,8 @@
 b {
    font-weight: normal;
 }
+
+.modal-content {
+  background-color:transparent;
+}
+

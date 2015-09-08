@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('spacenewsioApp', [
+  'bootstrapLightbox',
   'ngCookies',
   'ngResource',
   'ngSanitize',

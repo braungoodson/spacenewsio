@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('spacenewsioApp')
-  .controller('SpaceNewsCtrl', function ($scope, $http) {
-    $scope.SpaceNews = [];
+  .controller('SpaceNewsCtrl', function ($scope, $http, Lightbox) {
+    $scope.news = [];
     $scope.busy = 'acquiring data...';
     $http.get('/api/space-newss')
       .then(function(response){
@@ -13,8 +13,15 @@ angular.module('spacenewsioApp')
         });
         angular.forEach(response.data, function(article) {
           $scope.busy = 'populating news... ' + article.title;
-          $scope.SpaceNews.push(article);
+          $scope.news.push(article);
         });
         $scope.busy = false;
       });
+    $scope.enlarge = function(article) {
+      return Lightbox.openModal([{
+        url: article.image.url,
+        caption: article.title,
+        thUrl: ''
+      }], 0);
+    };
   });

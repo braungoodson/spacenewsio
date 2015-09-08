@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('spacenewsioApp')
-  .controller('EconomicsCtrl', function ($scope, $http) {
+  .controller('EconomicsCtrl', function ($scope, $http, Lightbox) {
     $scope.Economics = [];
     $scope.busy = 'aquiring data...';
     $http.get('/api/economicss')
@@ -17,4 +17,11 @@ angular.module('spacenewsioApp')
         });
         $scope.busy = false;
       });
+    $scope.enlarge = function(article) {
+      return Lightbox.openModal([{
+        url: article.image.url,
+        caption: article.title,
+        thUrl: ''
+      }], 0);
+    };
   });

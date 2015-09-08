@@ -14,6 +14,9 @@ angular.module('spacenewsioApp')
     }, {
       'title': 'MUSIC',
       'link': '/metal-news'
+    }, {
+      'title': 'MOVIES',
+      'link': '/movies-news'
     }];
 
     $scope.isCollapsed = true;

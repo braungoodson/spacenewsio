@@ -43,27 +43,28 @@ angular.module('spacenewsioApp')
            */
           return function() {
             var args = Array.prototype.slice.call(arguments),
-                name = args.shift(),
+                article = args.shift(),
                 deleteModal;
 
             deleteModal = openModal({
               modal: {
                 dismissable: true,
-                title: 'Confirm Delete',
-                html: '<p>Are you sure you want to delete <strong>' + name + '</strong> ?</p>',
+                title: article.title,
+                //html: '<p>Are you sure you want to delete <strong>' + name + '</strong> ?</p>',
+                html: '<img style=width:100%; src='+article.image.url+' />',
                 buttons: [{
                   classes: 'btn-danger',
-                  text: 'Delete',
+                  text: 'close',
                   click: function(e) {
                     deleteModal.close(e);
                   }
-                }, {
+                }/*, {
                   classes: 'btn-default',
                   text: 'Cancel',
                   click: function(e) {
                     deleteModal.dismiss(e);
                   }
-                }]
+                }*/]
               }
             }, 'modal-danger');
 

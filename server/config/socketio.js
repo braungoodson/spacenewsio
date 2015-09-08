@@ -18,6 +18,7 @@ function onConnect(socket) {
   });
 
   // Insert sockets below
+  require('../api/movies-news/movies-news.socket').register(socket);
   require('../api/theatre-news/theatre-news.socket').register(socket);
   require('../api/metal-news/metal-news.socket').register(socket);
   require('../api/economics/economics.socket').register(socket);

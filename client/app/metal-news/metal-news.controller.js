@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('spacenewsioApp')
-  .controller('MetalNewsCtrl', function ($scope, $http) {
+  .controller('MetalNewsCtrl', function ($scope, $http, Lightbox) {
     $scope.MetalNews = [];
     $scope.busy = 'acquiring data...';
     $http.get('/api/metal-newss')
@@ -18,4 +18,11 @@ angular.module('spacenewsioApp')
         $scope.busy = false;
         console.log($scope.MetalNews);
       });
+    $scope.enlarge = function(article) {
+      return Lightbox.openModal([{
+        url: article.image.url,
+        caption: article.title,
+        thUrl: ''
+      }], 0);
+    };
   });
