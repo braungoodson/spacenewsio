@@ -38,7 +38,7 @@ exports.update = function(req, res) {
   SpaceNews.findById(req.params.id, function (err, spaceNews) {
     if (err) { return handleError(res, err); }
     if(!spaceNews) { return res.send(404); }
-    var updated = _.merge(spacNews, req.body);
+    var updated = _.merge(spaceNews, req.body);
     updated.save(function (err) {
       if (err) { return handleError(res, err); }
       return res.json(200, spaceNews);

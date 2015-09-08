@@ -9,8 +9,6 @@ angular.module('spacenewsioApp')
       aggregate: []
     };
 
-    $resource('/api/space-newss/ceres')
-
     // Public API here
     return {
       query: function() {
