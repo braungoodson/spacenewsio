@@ -6,13 +6,27 @@ var News = require('ewc-news');
 
 // Get list of space-newss
 exports.index = function(req, res) {
-  News.news({
-    keywords: 'ceres, europa jupiter, pluto, philae, mars', 
-    done: function(news) {
-      ////console.log(news);
-      res.json(news);
+  var searches = [];
+  var news = [];
+  searches.push({keyword:'ceres',pages:2,start:0});
+  searches.push({keyword:'europa jupiter',pages:2,start:0});
+  searches.push({keyword:'philae',pages:2,start:0});
+  searches.push({keyword:'pluto',pages:2,start:0});
+  searches.push({keyword:'mars',pages:2,start:0});
+  var dealWithIt = function(responses) {
+    for (var p in responses) {
+      var response = JSON.parse(responses[p]);
+      var results = response.responseData.results;
+      for (var s in results) {
+        news.push(results[s]);
+      }
     }
-  });
+    res.json(news);
+  };
+  var why = function(because) {
+    throw new beause;
+  };
+  News.news(searches).then(dealWithIt).fail(why);
 };
 
 // Get a single space-news

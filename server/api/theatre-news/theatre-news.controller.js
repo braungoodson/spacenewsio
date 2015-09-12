@@ -4,15 +4,29 @@ var _ = require('lodash');
 var TheatreNews = require('./theatre-news.model');
 var News = require('ewc-news');
 
-// Get list of space-newss
+// Get list of theatre-newss
 exports.index = function(req, res) {
-  News.news({
-    keywords: 'musical, broadway, audience, tony award', 
-    done: function(news) {
-      ////console.log(news);
-      res.json(news);
+  var searches = [];
+  var news = [];
+  searches.push({keyword:'musical',pages:2,start:0});
+  searches.push({keyword:'audience',pages:2,start:0});
+  searches.push({keyword:'broadway',pages:2,start:0});
+  searches.push({keyword:'tony award',pages:2,start:0});
+  //searches.push({keyword:'',pages:2,start:0});
+  var dealWithIt = function(responses) {
+    for (var p in responses) {
+      var response = JSON.parse(responses[p]);
+      var results = response.responseData.results;
+      for (var s in results) {
+        news.push(results[s]);
+      }
     }
-  });
+    res.json(news);
+  };
+  var why = function(because) {
+    throw new beause;
+  };
+  News.news(searches).then(dealWithIt).fail(why);
 };
 
 // Get a single theatre-news
